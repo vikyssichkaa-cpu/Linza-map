@@ -76,7 +76,7 @@ function buildPopupHtml(feature) {
   const props = feature.properties || {};
 
   const title = escapeHtml(props.attr_Title || `Object ${props.ID || ""}`.trim() || "Object");
-  const description = props["attr_Історична довідка"] ? `<p class="popup__text">${escapeHtml(props.attr_Text)}</p>` : "";
+  const description = props["attr_Історична довідка"] ? `<p class="popup__text">${escapeHtml(props["attr_Історична довідка"])}</p>` : "";
 
   const addressParts = [props["attr_Тип ВДМ"], props["attr_Вулиця"], props["attr_Номер будинку"]].filter(Boolean);
   const addressHtml = addressParts.length
