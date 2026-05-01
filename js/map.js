@@ -81,15 +81,15 @@ function buildPopupHtml(feature) {
   const title = escapeHtml(props.attr_Title || `Object ${props.ID || ""}`.trim() || "Object");
   const description = props["attr_Історична довідка"] ? `<p class="popup__text">${escapeHtml(props["attr_Історична довідка"])}</p>` : "";
 
-  const addressParts = [props["attr_Тип ВДМ"], props["attr_Вулиця"], props["attr_Номер будинку"]].filter(Boolean);
+  const addressParts = [props["attr_Вулиця"], props["attr_Номер будинку"]].filter(Boolean);
   const addressHtml = addressParts.length
-    ? `<p><strong>Address:</strong> ${escapeHtml(addressParts.join(" "))}</p>`
+    ? `<p><strong>Адреса:</strong> ${escapeHtml(addressParts.join(" "))}</p>`
     : "";
 
   const typeHtml = props["attr_Вид"] ? `<p><strong>Type:</strong> ${escapeHtml(props["attr_Вид"])}</p>` : "";
 
   const sourceUrl = safeUrl(props.attr_Source);
-  const sourceHtml = sourceUrl ? `<p><strong>Посилання на матеріали Лінзи:</strong> <a href="${sourceUrl}" target="_blank" rel="noopener">Переглянути</a></p>` : "";
+  const sourceHtml = sourceUrl ? `<p><strong>Більше про це у матеріалі Лінзи:</strong> <a href="${sourceUrl}" target="_blank" rel="noopener">Переглянути</a></p>` : "";
 
   return `
     <div class="popup">
