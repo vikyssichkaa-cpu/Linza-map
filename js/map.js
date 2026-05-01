@@ -86,15 +86,13 @@ function buildPopupHtml(feature) {
     ? `<p><strong>Адреса:</strong> ${escapeHtml(addressParts.join(" "))}</p>`
     : "";
 
-  const typeHtml = props["attr_Вид"] ? `<p><strong>Type:</strong> ${escapeHtml(props["attr_Вид"])}</p>` : "";
-
+  const allowedIds = [7, 8, 12, 17, 32, 44];
   const sourceUrl = safeUrl(props.attr_Source);
-  const sourceHtml = sourceUrl ? `<p><strong>Більше про це у матеріалі Лінзи:</strong> <a href="${sourceUrl}" target="_blank" rel="noopener">Переглянути</a></p>` : "";
+  const sourceHtml = sourceUrl && allowedIds.includes(parseInt(props.ID)) ? `<p><strong>Більше про це у матеріалі Лінзи:</strong> <a href="${sourceUrl}" target="_blank" rel="noopener">Переглянути</a></p>` : "";
 
   return `
     <div class="popup">
       <h3>${title}</h3>
-      ${typeHtml}
       ${addressHtml}
       ${description}
       ${sourceHtml}
