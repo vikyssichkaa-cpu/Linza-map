@@ -1,4 +1,4 @@
-import { MAP_CONFIG, FEATURE_STYLE, FEATURE_HOVER_STYLE } from "./config.js";
+import { MAP_CONFIG, FEATURE_STYLE, FEATURE_STYLE_WITH_LINK, FEATURE_HOVER_STYLE, FEATURE_HOVER_STYLE_WITH_LINK } from "./config.js";
 
 const map = L.map("map", {
   zoomControl: true,
@@ -33,7 +33,9 @@ async function loadGeoJson() {
 
     const geoJson = await response.json();
     geoJsonLayer = L.geoJSON(geoJson, {
-      style: FEATURE_STYLE,
+      style: function(feature) {
+        return feature.properties && feature.properties.attr_Source ? FEATURE_STYLE_WITH_LINK : FEATURE_STYLE;
+      },
       onEachFeature,
     }).addTo(map);
 
@@ -61,7 +63,8 @@ function onEachFeature(feature, layer) {
 
   layer.on({
     mouseover(event) {
-      event.target.setStyle(FEATURE_HOVER_STYLE);
+      const hasLink = event.target.feature.properties && event.target.feature.properties.attr_Source;
+      event.target.setStyle(hasLink ? FEATURE_HOVER_STYLE_WITH_LINK : FEATURE_HOVER_STYLE);
       event.target.bringToFront();
     },
     mouseout(event) {
@@ -86,7 +89,7 @@ function buildPopupHtml(feature) {
   const typeHtml = props["attr_Вид"] ? `<p><strong>Type:</strong> ${escapeHtml(props["attr_Вид"])}</p>` : "";
 
   const sourceUrl = safeUrl(props.attr_Source);
-  const sourceHtml = sourceUrl ? `<p><a href="${sourceUrl}" target="_blank" rel="noopener">Source</a></p>` : "";
+  const sourceHtml = sourceUrl ? `<p><strong>Посилання на матеріали Лінзи:</strong> <a href="${sourceUrl}" target="_blank" rel="noopener">Переглянути</a></p>` : "";
 
   return `
     <div class="popup">
