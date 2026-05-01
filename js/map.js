@@ -10,6 +10,7 @@ const map = L.map("map", {
 
 const statusEl = document.getElementById("status");
 let geoJsonLayer;
+const ALLOWED_LINK_IDS = [7, 8, 12, 17, 32, 44];
 
 L.tileLayer(MAP_CONFIG.tileUrl, {
   attribution: MAP_CONFIG.tileAttribution,
@@ -34,7 +35,8 @@ async function loadGeoJson() {
     const geoJson = await response.json();
     geoJsonLayer = L.geoJSON(geoJson, {
       style: function(feature) {
-        return feature.properties && feature.properties.attr_Source ? FEATURE_STYLE_WITH_LINK : FEATURE_STYLE;
+        const id = feature.properties && feature.properties.ID ? parseInt(feature.properties.ID, 10) : null;
+        return ALLOWED_LINK_IDS.includes(id) ? FEATURE_STYLE_WITH_LINK : FEATURE_STYLE;
       },
       onEachFeature,
     }).addTo(map);
@@ -86,9 +88,8 @@ function buildPopupHtml(feature) {
     ? `<p><strong>Адреса:</strong> ${escapeHtml(addressParts.join(" "))}</p>`
     : "";
 
-  const allowedIds = [7, 8, 12, 17, 32, 44];
   const sourceUrl = safeUrl(props.attr_Source);
-  const sourceHtml = sourceUrl && allowedIds.includes(parseInt(props.ID)) ? `<p><strong>Більше про це у матеріалі Лінзи:</strong> <a href="${sourceUrl}" target="_blank" rel="noopener">Переглянути</a></p>` : "";
+  const sourceHtml = sourceUrl && ALLOWED_LINK_IDS.includes(parseInt(props.ID, 10)) ? `<p><strong>Більше про це у матеріалі Лінзи:</strong> <a href="${sourceUrl}" target="_blank" rel="noopener">Переглянути</a></p>` : "";
 
   return `
     <div class="popup">
