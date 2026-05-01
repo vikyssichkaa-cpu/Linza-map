@@ -65,7 +65,8 @@ function onEachFeature(feature, layer) {
 
   layer.on({
     mouseover(event) {
-      const hasLink = event.target.feature.properties && event.target.feature.properties.attr_Source;
+      const id = event.target.feature.properties && event.target.feature.properties.ID ? parseInt(event.target.feature.properties.ID, 10) : null;
+      const hasLink = ALLOWED_LINK_IDS.includes(id);
       event.target.setStyle(hasLink ? FEATURE_HOVER_STYLE_WITH_LINK : FEATURE_HOVER_STYLE);
       event.target.bringToFront();
     },
