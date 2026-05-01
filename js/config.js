@@ -1,8 +1,8 @@
 export const MAP_CONFIG = {
   geoJsonPath: "data/Data.geojson",
   initialCenter: [49.41542035, 26.9841635],
-  initialZoom: 15,
-  minZoom: 13,
+  initialZoom: 13,
+  minZoom: 12,
   maxZoom: 20,
   maxBoundsPad: 0.08,
   tileUrl: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
