@@ -11,11 +11,11 @@ export const MAP_CONFIG = {
 };
 
 export const FEATURE_STYLE = {
-  color: "#808080",
-  weight: 0,
-  opacity: 0,
-  fillColor: "#808080",
-  fillOpacity: 0.8,
+  color: "#666666",
+  weight: 1.5,
+  opacity: 0.7,
+  fillColor: "#707070",
+  fillOpacity: 0.75,
 };
 
 export const FEATURE_STYLE_WITH_LINK = {
@@ -27,10 +27,10 @@ export const FEATURE_STYLE_WITH_LINK = {
 };
 
 export const FEATURE_HOVER_STYLE = {
-  color: "#808080",
-  weight: 0,
-  opacity: 0,
-  fillColor: "#808080",
+  color: "#555555",
+  weight: 2,
+  opacity: 0.9,
+  fillColor: "#707070",
   fillOpacity: 0.95,
 };
 
