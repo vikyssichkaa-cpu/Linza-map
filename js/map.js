@@ -34,9 +34,8 @@ async function loadGeoJson() {
 
     const geoJson = await response.json();
     geoJsonLayer = L.geoJSON(geoJson, {
-      style: function(feature) {
-        const id = feature.properties && feature.properties.ID ? parseInt(feature.properties.ID, 10) : null;
-        return ALLOWED_LINK_IDS.includes(id) ? FEATURE_STYLE_WITH_LINK : FEATURE_STYLE;
+      style: function() {
+        return FEATURE_STYLE_WITH_LINK;
       },
       onEachFeature,
     }).addTo(map);
