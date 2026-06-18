@@ -11,33 +11,33 @@ export const MAP_CONFIG = {
 };
 
 export const FEATURE_STYLE = {
-  color: "#c62828",
-  weight: 1.5,
-  opacity: 0.7,
-  fillColor: "#d32f2f",
-  fillOpacity: 0.75,
+  color: "#808080",
+  weight: 0,
+  opacity: 0,
+  fillColor: "#808080",
+  fillOpacity: 0.8,
 };
 
 export const FEATURE_STYLE_WITH_LINK = {
-  color: "#b71c1c",
+  color: "#004aad",
   weight: 2,
   opacity: 1,
-  fillColor: "#e53935",
+  fillColor: "#004aad",
   fillOpacity: 0.9,
 };
 
 export const FEATURE_HOVER_STYLE = {
-  color: "#b71c1c",
-  weight: 2,
-  opacity: 0.9,
-  fillColor: "#e53935",
+  color: "#808080",
+  weight: 0,
+  opacity: 0,
+  fillColor: "#808080",
   fillOpacity: 0.95,
 };
 
 export const FEATURE_HOVER_STYLE_WITH_LINK = {
-  color: "#a71b1b",
+  color: "#004aad",
   weight: 3,
   opacity: 1,
-  fillColor: "#d32f2f",
+  fillColor: "#004aad",
   fillOpacity: 0.98,
 };
