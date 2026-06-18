@@ -1,4 +1,4 @@
-# Khmelnytskyi Leaflet Map
+# Donetsk Oblast Leaflet Map
 
 Static map project based on vanilla HTML/CSS/JS + Leaflet with CartoDB Positron Light tiles.
 
@@ -15,12 +15,15 @@ Static map project based on vanilla HTML/CSS/JS + Leaflet with CartoDB Positron 
 Start any static server from this folder, for example:
 
 ```bash
+cd /path/to/All.for.map
 python3 -m http.server 8080
 ```
 
-Then open:
+Then open in your browser:
 
 `http://localhost:8080`
+
+> Потрібно запускати через локальний сервер, інакше браузер може блокувати завантаження GeoJSON-файлу.
 
 ## Deploy
 
